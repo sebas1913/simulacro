@@ -1,0 +1,15 @@
+@import '../../../styles/variables';
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+
+    .link{
+        text-decoration: none;
+    }
+    .title{
+        color: $color-blue;
+    }
+
+}

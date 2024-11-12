@@ -1,11 +1,11 @@
 interface ParagraphProps{
     children: React.ReactNode;
-    classname?: string;
+    className?: string;
 }
 
-const Paragraph: React.FC<ParagraphProps> = ({children, classname}) =>{
+const Paragraph: React.FC<ParagraphProps> = ({children, className}) =>{
     return(
-        <p className={classname}>{children}</p>
+        <p className={className}>{children}</p>
     )
 }
 
