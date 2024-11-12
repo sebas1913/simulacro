@@ -33,8 +33,13 @@
         align-items: center;
         gap: 0.5rem;
         margin: 1.5rem;
-        font-size: 1.1rem;
+        font-size: 1rem;
 
+        .link{
+            text-decoration: none;
+            color: $color-blue;
+            margin: 0.5rem;
+        }
     }
    
     .form {
@@ -42,9 +47,3 @@
     }
 }
 
-.link{
-    text-decoration: none;
-    color: $color-blue;
-    font-size: 1.15rem;
-    margin: 0.5rem;
-}

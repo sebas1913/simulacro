@@ -62,47 +62,44 @@ const LoginForm = () => {
     }
 
     return (
-        <>
-            <Link className={styles.link} href={'/'}>Volver al inicio</Link>
-            <div className={styles.containerForm}>
-                <div className={styles.headerForm}>
-                    <Title className={styles.title} level={1}>Iniciar sesión</Title>
-                    <Paragraph className={styles.paragraph}>Ingresa tus credenciales para acceder a tu cuenta</Paragraph>
+        <div className={styles.containerForm}>
+            <div className={styles.headerForm}>
+                <Title className={styles.title} level={1}>Iniciar sesión</Title>
+                <Paragraph className={styles.paragraph}>Ingresa tus credenciales para acceder a tu cuenta</Paragraph>
+            </div>
+
+            <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
+                <FormField<ILoginRequest>
+                    control={control}
+                    type="email"
+                    label="Correo electrónico"
+                    name="email"
+                    error={errors.email}
+                    placeholder="Ingresa tu correo electrónico"
+                />
+
+                <FormField<ILoginRequest>
+                    control={control}
+                    type="password"
+                    label="Contraseña"
+                    name="password"
+                    error={errors.password}
+                    placeholder="Ingresa tu contraseña"
+                />
+
+                <Button className="primary-big" type="submit">Iniciar sesión</Button>
+
+            </form>
+            <div className={styles.footerForm}>
+                <div>
+                    <Link href={'#'} className={styles.link}>¿Olvidaste tu contraseña?</Link>
                 </div>
-
-                <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
-                    <FormField<ILoginRequest>
-                        control={control}
-                        type="email"
-                        label="Correo electrónico"
-                        name="email"
-                        error={errors.email}
-                        placeholder="Ingresa tu correo electrónico"
-                    />
-
-                    <FormField<ILoginRequest>
-                        control={control}
-                        type="password"
-                        label="Contraseña"
-                        name="password"
-                        error={errors.password}
-                        placeholder="Ingresa tu contraseña"
-                    />
-
-                    <Button className="primary-big" type="submit">Iniciar sesión</Button>
-
-                </form>
-                <div className={styles.footerForm}>
-                    <div>
-                        <Link href={'#'} className={styles.link}>¿Olvidaste tu contraseña?</Link>
-                    </div>
-                    <div>
-                        ¿No tienes cuenta?
-                        <Link href={'/register'} className={styles.link}> Regístrate aquí</Link>
-                    </div>
+                <div>
+                    ¿No tienes cuenta?
+                    <Link href={'/register'} className={styles.link}> Regístrate aquí</Link>
                 </div>
             </div>
-        </>
+        </div>
 
     )
 }
