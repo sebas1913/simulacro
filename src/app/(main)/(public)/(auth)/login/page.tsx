@@ -1,9 +1,9 @@
-import React from 'react'
+import LoginTemplate from '@/ui/template/loginTemplate/LoginTemplate'
 
 export default function PageLogin() {
-  return (
-    <div>
-      login
-    </div>
-  )
+    return (
+        <div>
+            <LoginTemplate />
+        </div>
+    )
 }

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import  '../styles/globals.scss';
 import { AuthProvider } from "./auth-provider";
 import { Raleway } from "next/font/google";
-import Header from "@/ui/organisms/header/Header";
 
 
 export const metadata: Metadata = {
@@ -21,7 +20,6 @@ export default function RootLayout({
     return (
         <html lang="es">
             <body className={raleway.className}>
-                <Header />
                 <AuthProvider>
                     {children}
                 </AuthProvider>
