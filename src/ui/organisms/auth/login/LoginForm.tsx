@@ -9,6 +9,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 import styles from "./form.module.scss"
 import Button from "@/ui/atoms/button/Button";
+import Title from "@/ui/atoms/Title";
+import Paragraph from "@/ui/atoms/Paragraph";
+import Link from "next/link";
 
 const loginSchema = yup.object().shape({
     email: yup
@@ -59,30 +62,48 @@ const LoginForm = () => {
     }
 
     return (
-        <div className={styles.containerForm}>
-            <form onSubmit={handleSubmit(handleLogin)}>
-                <FormField<ILoginRequest>
-                    control={control}
-                    type="email"
-                    label="Correo electrónico"
-                    name="email"
-                    error={errors.email}
-                    placeholder="Ingresa tu correo electrónico"
-                />
+        <>
+            <Link className={styles.link} href={'/'}>Volver al inicio</Link>
+            <div className={styles.containerForm}>
+                <div className={styles.headerForm}>
+                    <Title className={styles.title} level={1}>Iniciar sesión</Title>
+                    <Paragraph className={styles.paragraph}>Ingresa tus credenciales para acceder a tu cuenta</Paragraph>
+                </div>
 
-                <FormField<ILoginRequest>
-                    control={control}
-                    type="password"
-                    label="Contraseña"
-                    name="password"
-                    error={errors.password}
-                    placeholder="Ingresa tu contraseña"
-                />
+                <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
+                    <FormField<ILoginRequest>
+                        control={control}
+                        type="email"
+                        label="Correo electrónico"
+                        name="email"
+                        error={errors.email}
+                        placeholder="Ingresa tu correo electrónico"
+                    />
 
-                <Button className="primary" type="submit">Iniciar sesión</Button>
+                    <FormField<ILoginRequest>
+                        control={control}
+                        type="password"
+                        label="Contraseña"
+                        name="password"
+                        error={errors.password}
+                        placeholder="Ingresa tu contraseña"
+                    />
 
-            </form>
-        </div>
+                    <Button className="primary-big" type="submit">Iniciar sesión</Button>
+
+                </form>
+                <div className={styles.footerForm}>
+                    <div>
+                        <Link href={'#'} className={styles.link}>¿Olvidaste tu contraseña?</Link>
+                    </div>
+                    <div>
+                        ¿No tienes cuenta?
+                        <Link href={'/register'} className={styles.link}> Regístrate aquí</Link>
+                    </div>
+                </div>
+            </div>
+        </>
+
     )
 }
 

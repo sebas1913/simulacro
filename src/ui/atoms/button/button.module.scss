@@ -20,6 +20,12 @@
         background-color: $color-primary;
         color: $color-secondary;
     }
+
+    &.primary-big{
+        background-color: $color-secondary;
+        color: $color-primary;
+        width: 100%;
+    }
     
 }
 

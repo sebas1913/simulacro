@@ -1,4 +1,50 @@
-.containerForm{
-    margin: auto;
-    width: 35%;
+@import '.../../../../../../styles/variables';
+@import '.../../../../../../styles/mixins.scss';
+
+
+.containerForm {
+    @include border-radius(0.5rem);
+    @include box-shadow();
+    margin: 5% auto; 
+    width: 34%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $color-primary;
+
+    .headerForm {
+        text-align: center;
+
+        .title{
+            font-weight: bold;
+            margin: 0.7rem;
+        }
+
+        .paragraph{
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .footerForm{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 1.5rem;
+        font-size: 1.1rem;
+
+    }
+   
+    .form {
+        font-weight: bold;
+    }
+}
+
+.link{
+    text-decoration: none;
+    color: $color-blue;
+    font-size: 1.15rem;
+    margin: 0.5rem;
 }
