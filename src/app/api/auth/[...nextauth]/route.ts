@@ -95,6 +95,8 @@ export const authOptions: NextAuthOptions = {
             customSession.user.name = (token as AuthToken).name;
             customSession.user.role = (token as AuthToken).role;
             customSession.user.photo = (token as AuthToken).photo;
+
+            customSession.user.photo = customSession.user.photo;
             return customSession;
         },
     },

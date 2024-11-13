@@ -1,0 +1,24 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins.scss';
+
+
+.nav{
+    @include box-shadow();
+    margin-left: 20%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color-primary;
+
+    .items{
+        display: flex;
+        gap: 1rem;
+
+        .title{
+            font-size: 1.7rem;
+            font-weight: 900;
+        }
+
+    }
+}

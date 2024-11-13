@@ -14,9 +14,7 @@ export class HttpClient {
         const token = session?.user?.token;
 
         return {
-            "Content-Type": "application/json",
             ...(token && { Authorization: `Bearer ${token}` })
-            
         }
     }
 
@@ -34,8 +32,8 @@ export class HttpClient {
             headers: headers,
             method: "GET",
             cache: "no-store"
-        })
-        return this.handleResponse(response)
+        });
+        return this.handleResponse(response);
     }
 
     async delete(url: string): Promise<void> {
@@ -43,26 +41,52 @@ export class HttpClient {
         await fetch(`${this.baseUrl}/${url}`, {
             headers: headers,
             method: "DELETE",
-        })
+        });
     }
 
     async post<T, B>(url: string, body: B): Promise<T> {
         const headers = await this.getHeader();
         const response = await fetch(`${this.baseUrl}/${url}`, {
-            headers: headers,
+            headers: {
+                ...headers,
+                "Content-Type": "application/json",
+            },
             method: "POST",
             body: JSON.stringify(body),
-        })
+        });
         return this.handleResponse(response);
     }
 
     async put<T, B>(url: string, body: B): Promise<T> {
         const headers = await this.getHeader();
         const response = await fetch(`${this.baseUrl}/${url}`, {
-            headers: headers,
+            headers: {
+                ...headers,
+                "Content-Type": "application/json",
+            },
             method: "PUT",
             body: JSON.stringify(body),
-        })
+        });
+        return this.handleResponse(response);
+    }
+
+    async postFormData<T>(url: string, formData: FormData): Promise<T> {
+        const headers = await this.getHeader();
+        const response = await fetch(`${this.baseUrl}/${url}`, {
+            headers: headers,
+            method: "POST",
+            body: formData,
+        });
+        return this.handleResponse(response);
+    }
+
+    async putFormData<T>(url: string, formData: FormData): Promise<T> {
+        const headers = await this.getHeader();
+        const response = await fetch(`${this.baseUrl}/${url}`, {
+            headers: headers,
+            method: "PUT",
+            body: formData,
+        });
         return this.handleResponse(response);
     }
 }

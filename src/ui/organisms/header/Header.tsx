@@ -12,17 +12,16 @@ const Header: React.FC = () => {
                 </Link>
             </div>
             <div>
-                <Link href={'/login'}>
+                <Link href={'/login'} className={styles.link}>
                     <Button>
                         Iniciar sesión
                     </Button>
                 </Link>
 
-                <Link href={'/register'}>
+                <Link href={'/register'} className={styles.link}>
                     <Button className="primary">Registrarse</Button>
                 </Link>
             </div>
-
         </header>
     )
 }

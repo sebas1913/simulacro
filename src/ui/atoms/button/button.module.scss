@@ -1,8 +1,6 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins.scss';
-
-
-.button{
+.button {
     @include border-radius(0.5rem);
     font-family: var(--font-principal);
     background: transparent;
@@ -10,22 +8,42 @@
     border: none;
     padding: 0.7rem 1.2rem;
     cursor: pointer;
-    
-    &.primary{
+    gap: 1rem;
+
+    &.primary {
         background-color: $color-secondary;
         color: $color-primary;
     }
 
-    &.secondary{
+    &.secondary {
         background-color: $color-primary;
         color: $color-secondary;
     }
 
-    &.primary-big{
+    &.primary-big {
         background-color: $color-secondary;
         color: $color-primary;
         width: 100%;
     }
-    
+
+    &.primary-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $color-secondary;
+        color: $color-primary;
+    }
+
+    &.secondary-icons-big {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-color: $color-primary;
+        color: $color-secondary;
+
+        &:hover{
+            background-color: $color-gray-hover;
+        }
+    }
 }
 
