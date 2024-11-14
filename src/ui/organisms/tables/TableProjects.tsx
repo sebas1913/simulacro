@@ -6,6 +6,7 @@ import { IGetProjectsResponse } from "@/app/core/application/dto/projects/projec
 import styles from './table.module.scss';
 import Table from "@/ui/molecules/table/Table";
 import Button from "@/ui/atoms/button/Button";
+import PaginationProjects from "../pagination/ProjectsPagination";
 
 
 interface TableProjectsProps{
@@ -56,6 +57,7 @@ const TableProjects: React.FC<TableProjectsProps> = ({dataResponse, onEdit}) => 
     return(
         <div>
             <Table headers={headers} data={formatedData}></Table>
+            <PaginationProjects data={dataResponse}></PaginationProjects>
         </div>
     )
 
