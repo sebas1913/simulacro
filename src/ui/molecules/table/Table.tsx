@@ -9,7 +9,7 @@ export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> 
 const Table: React.FC<TableProps> = ({ headers, data, className, ...props }) => {
     return (
         <div className={styles.container}>
-            <Title level={1}>Lista de proyectos</Title>
+            <Title level={2} className={styles.title}>Lista de proyectos</Title>
             <table className={styles.table} {...props}>
                 <thead>
                     <tr>

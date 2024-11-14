@@ -11,12 +11,11 @@ import Modal from '../modal/Modal';
 import ProjectForm from '../projectsForm/ProjectsForm';
 
 const Navbar: React.FC = () => {
-    const { data: session  } = useSession();
+    const { data: session } = useSession();
     const sessionUser = session as CustomSession;
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [projectID, setProjectID] = useState<number>();
-
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -27,6 +26,27 @@ const Navbar: React.FC = () => {
         setProjectID(undefined);
     };
 
+    const downloadReport = async () => {
+        try {
+            const response = await fetch('/api/projects/download');
+
+            if (!response.ok) {
+                throw new Error('No se pudo descargar el archivo');
+            }
+
+            const blob = await response.blob();
+
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'reporte-proyecto.xlsx';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        } catch (error) {
+            console.error('Error al descargar el archivo:', error);
+        }
+    };
 
     return (
         <nav className={styles.nav}>
@@ -35,8 +55,12 @@ const Navbar: React.FC = () => {
             </div>
 
             <div className={styles.items}>
-                <Button className="primary-icons">{Icons.download} Descargar reporte</Button>
-                <ButtonCreate onClick={openModal} text='Nuevo proyecto'></ButtonCreate>
+                <Button className="primary-icons" onClick={downloadReport}>
+                    {Icons.download} Descargar reporte
+                </Button>
+
+                <ButtonCreate onClick={openModal} text="Nuevo proyecto" />
+                
                 <div className={styles.infoUser}>
                     <img
                         className={styles.image}
@@ -48,10 +72,10 @@ const Navbar: React.FC = () => {
             </div>
 
             <Modal isVisible={isModalOpen} onClose={closeModal}>
-                <ProjectForm closeModal={closeModal} projectID={projectID}/>
+                <ProjectForm closeModal={closeModal} projectID={projectID} />
             </Modal>
         </nav>
-    )
-}
+    );
+};
 
 export default Navbar;

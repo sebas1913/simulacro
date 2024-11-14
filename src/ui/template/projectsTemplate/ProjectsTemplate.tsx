@@ -5,6 +5,7 @@ import TableProjects from "@/ui/organisms/tables/TableProjects";
 import styles from './template.module.scss';
 import Modal from "@/ui/organisms/modal/Modal";
 import ProjectForm from "@/ui/organisms/projectsForm/ProjectsForm";
+import PanelCards from "@/ui/organisms/panelCards/PanelCards";
 
 interface IProps {
     dataResponse: IGetProjectsResponse;
@@ -29,6 +30,8 @@ const ProjectsPageTemplate: React.FC<IProps> = ({ dataResponse }) => {
 
     return (
         <div className={styles.container}>
+            <PanelCards data={dataResponse}></PanelCards>
+
             <TableProjects dataResponse={dataResponse} onEdit={handleEdit}></TableProjects>
 
             <Modal isVisible={isModalOpen} onClose={closeModal}>
