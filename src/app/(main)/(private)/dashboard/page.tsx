@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { ProjectService } from "@/app/infrastructure/services/projects.service";
+import ProjectsPageTemplate from "@/ui/template/projectsTemplate/ProjectsTemplate";
 
 interface IProps {
     searchParams: {
@@ -28,14 +29,13 @@ export default async function ProjectsPage({ searchParams }: IProps) {
 
     const service = new ProjectService();
     const page = searchParams.page ? parseInt(searchParams.page) : 1;
-    const size = searchParams.size ? parseInt(searchParams.size) : 1;
+    const size = searchParams.size ? parseInt(searchParams.size) : 10;
     const data = await service.find(page, size);
 
-    console.log(data);
     
-
     return (
         <div>
+            <ProjectsPageTemplate dataResponse={data}></ProjectsPageTemplate>
         </div>
     )
 }
