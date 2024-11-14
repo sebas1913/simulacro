@@ -54,16 +54,11 @@ const ProjectForm = ({ projectID, closeModal }: IProps) => {
                     const response = await fetch(`/api/projects/get/${projectID}`);
                     const data : IGetProjectsResponseID = await response.json();
                     console.log(data);
-
-                    const startDate = new Date(data.data.startDate).toISOString().split('T')[0];
-                    const endDate = new Date(data.data.endDate).toISOString().split('T')[0];
                     
                     setValue('title', data.data.title);
                     setValue('description', data.data.description);
-                    setValue('startDate', startDate as any);
-                    setValue('endDate', endDate as any);
-
-                
+                    setValue('startDate', data.data.startDate);
+                    setValue('endDate', data.data.endDate);
 
                 } catch (error) {
                     console.log(error);
