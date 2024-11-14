@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import styles from './form.module.scss';
 import Title from "@/ui/atoms/Title";
 import Button from "@/ui/atoms/button/Button";
+import { IGetProjectsResponseID } from "@/app/core/application/dto/projects/projects-response.dto";
 
 interface IProps {
     closeModal: () => void;
@@ -44,17 +45,60 @@ const ProjectForm = ({ projectID, closeModal }: IProps) => {
         mode: "onChange",
         reValidateMode: "onChange",
         resolver: yupResolver(projectSchema),
-    })
+    });
+
+    useEffect(() => {
+        if (projectID) {
+            const fetchProjectID = async () => {
+                try {
+                    const response = await fetch(`/api/projects/get/${projectID}`);
+                    const data : IGetProjectsResponseID = await response.json();
+                    console.log(data);
+
+                    const startDate = new Date(data.data.startDate).toISOString().split('T')[0];
+                    const endDate = new Date(data.data.endDate).toISOString().split('T')[0];
+                    
+                    setValue('title', data.data.title);
+                    setValue('description', data.data.description);
+                    setValue('startDate', startDate as any);
+                    setValue('endDate', endDate as any);
+
+                
+
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+
+            fetchProjectID();
+        }
+    }, [projectID])
 
     const handleProject = async (data: IProjectRequest) => {
-        const response = await fetch('/api/projects/create', {
-            method: 'POST',
-            body: JSON.stringify(data)
-        })
 
-        if (!response) {
-            console.log('Error el enviar el formulario :(');
+        if (projectID) {
+            const response = await fetch(`/api/projects/update/${projectID}`, {
+                method: 'PATCH',
+                body: JSON.stringify(data)
+            });
+
+            console.log('Actualizado');
+
+            if (!response) {
+                console.log('Error el enviar el formulario :(');
+            }
+
+        } else {
+            const response = await fetch('/api/projects/create', {
+                method: 'POST',
+                body: JSON.stringify(data)
+            })
+
+            if (!response) {
+                console.log('Error el enviar el formulario :(');
+            }
         }
+
 
         router.refresh();
         closeModal();

@@ -31,3 +31,13 @@ export interface Metadata {
     totalPages:   number;
     currentPage:  number;
 }
+
+export interface IGetProjectsResponseID {
+    statusCode: number;
+    message:    string;
+    data:       Datum;
+    metadata:   Metadata;
+}
+
+
+

@@ -19,8 +19,22 @@ const TableProjects: React.FC<TableProjectsProps> = ({dataResponse, onEdit}) => 
     const router = useRouter();
     const { data } = dataResponse;
 
-    const handleDelete = (id: number) => {
-        console.log('Eliminado');
+    const handleDelete = async (id: number) => {
+        const isConfirm = confirm('¿Estás seguro de que deseas eliminar este proyecto?');
+        if (!isConfirm) return;
+
+        try {
+            await fetch(`/api/projects/delete/${id}`, {
+                method: 'DELETE'
+            });
+            console.log('Eliminado');
+            router.refresh();
+    
+        } catch (error) {
+            console.log('Error', error);
+        }
+
+        router.refresh();
         
     }
 
@@ -42,7 +56,7 @@ const TableProjects: React.FC<TableProjectsProps> = ({dataResponse, onEdit}) => 
         isActive: project.isActive ? (
             <span className={styles.active}>Activo</span>
         ) : (
-            <span className={styles.inactive}>No disponible</span>
+            <span className={styles.inactive}>Inactivo</span>
         ),
         organizer: project.organizer.name,
         actions: (
