@@ -1,19 +1,19 @@
 import { ILoginRequest } from "@/app/core/application/dto/auth/login-request.dto";
 import { AuthService } from "@/app/infrastructure/services/auth.service";
-import NextAuth, { NextAuthOptions, Session, User } from "next-auth";
+import NextAuth, { NextAuthOptions, Session } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { ILoginResponse } from "@/app/core/application/dto/auth/login-response.dto";
 
 interface AuthToken {
-    id?: number;
+    id?: string;
     token?: string;
     name?: string;
-    photo?: string;
+    email?: string;
     role?: string;
+    photo?: string;
 }
 
 interface AuthUser {
-    id: number;
+    id: string;
     token: string;
     name: string;
     email: string;
@@ -23,7 +23,7 @@ interface AuthUser {
 
 export interface CustomSession extends Session {
     user: {
-        id?: number;
+        id?: string;
         token?: string | null;
         name?: string | null;
         email?: string | null;
@@ -53,10 +53,14 @@ export const authOptions: NextAuthOptions = {
 
                 try {
                     const authService = new AuthService();
-                    const response: ILoginResponse = await authService.login(loginRequest);
+                    const response = await authService.login(loginRequest);
+
+                    const idString = response.data.user.sub.toString();
+
+                    
 
                     return {
-                        id: response.data.user.sub,
+                        id: idString,
                         token: response.data.access_token,
                         name: response.data.user.email,
                         email: response.data.user.email,
@@ -72,6 +76,7 @@ export const authOptions: NextAuthOptions = {
                 }
             }
         }),
+        
     ],
     session: {
         strategy: "jwt",
@@ -93,10 +98,8 @@ export const authOptions: NextAuthOptions = {
             customSession.user.id = (token as AuthToken).id;
             customSession.user.token = (token as AuthToken).token;
             customSession.user.name = (token as AuthToken).name;
-            customSession.user.role = (token as AuthToken).role;
             customSession.user.photo = (token as AuthToken).photo;
 
-            customSession.user.photo = customSession.user.photo;
             return customSession;
         },
     },

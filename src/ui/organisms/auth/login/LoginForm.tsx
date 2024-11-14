@@ -3,7 +3,6 @@ import * as yup from "yup";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { ILoginRequest } from "@/app/core/application/dto/auth/login-request.dto";
-import { ErrorResponse, FieldError } from "@/app/core/application/dto/common/error-response.dto";
 import { FormField } from "@/ui/molecules/common/FormField";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
@@ -54,7 +53,7 @@ const LoginForm = () => {
                 return;
             }
 
-            router.push('/dashboard')
+            router.push('/dashboard');
 
         } catch (error) {
             console.log(error);

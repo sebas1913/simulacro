@@ -1,5 +1,5 @@
 import { PAuth } from "@/app/core/application/ports";
-import { HttpClient } from "../utils/httpClient";
+import { HttpClient } from "@/app/infrastructure/utils/httpClient";
 import { ILoginRequest } from "@/app/core/application/dto/auth/login-request.dto";
 import { ILoginResponse } from "@/app/core/application/dto/auth/login-response.dto";
 
