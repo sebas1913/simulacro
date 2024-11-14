@@ -21,9 +21,9 @@ const Navbar: React.FC = () => {
                 <Button className='primary-icons'>{Icons.add} Nuevo proyecto</Button>
                 <div className={styles.infoUser}>
                     <img
+                        className={styles.image}
                         src={sessionUser?.user.photo!}
                         alt="Foto de usuario"
-                        width='50px'
                     />
                     <Paragraph>{session?.user?.name}</Paragraph>
                 </div>

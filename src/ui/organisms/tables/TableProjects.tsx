@@ -38,12 +38,16 @@ const TableProjects: React.FC<TableProjectsProps> = ({dataResponse, onEdit}) => 
         description: project.description,
         startDate: project.startDate,
         endDate: project.endDate,
-        isActive: project.isActive,
+        isActive: project.isActive ? (
+            <span className={styles.active}>Activo</span>
+        ) : (
+            <span className={styles.inactive}>No disponible</span>
+        ),
         organizer: project.organizer.name,
         actions: (
             <div className={styles.actions}>
-                <Button onClick={() => onEdit(project.id)}>{Icons.edit}</Button>
-                <Button onClick={() => handleDelete(project.id)}>{Icons.delete}</Button>
+                <Button className="secondary-border" onClick={() => onEdit(project.id)}>Editar</Button>
+                <Button className="delete" onClick={() => handleDelete(project.id)}>Eliminar</Button>
             </div>
         ),
         

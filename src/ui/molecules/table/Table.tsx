@@ -1,3 +1,4 @@
+import Title from '@/ui/atoms/Title';
 import styles from './table.module.scss';
 
 export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> {
@@ -8,6 +9,7 @@ export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> 
 const Table: React.FC<TableProps> = ({ headers, data, className, ...props }) => {
     return (
         <div className={styles.container}>
+            <Title level={1}>Lista de proyectos</Title>
             <table className={styles.table} {...props}>
                 <thead>
                     <tr>

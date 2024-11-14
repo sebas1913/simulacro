@@ -1,9 +1,11 @@
 @import '../../../styles/variables';
 
 .container{
+    background-color: $color-primary;
+    width: 98%;
+    margin: 1%;
+
     .table{
-        margin: 1%;
-        background-color: $color-primary;
         font-size: 0.9rem;
         width: 98%;
 
@@ -23,9 +25,6 @@
             td {
                 padding: 1rem;
                 border-bottom: 0.1rem solid $color-border;
-                &:nth-child(2) {
-                    width: 28rem;
-                }     
             }
         }
     }
