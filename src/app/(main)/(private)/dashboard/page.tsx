@@ -29,7 +29,7 @@ export default async function ProjectsPage({ searchParams }: IProps) {
 
     const service = new ProjectService();
     const page = searchParams.page ? parseInt(searchParams.page) : 1;
-    const size = searchParams.size ? parseInt(searchParams.size) : 10;
+    const size = searchParams.size ? parseInt(searchParams.size) : 4;
     const data = await service.find(page, size);
 
     

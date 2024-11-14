@@ -25,9 +25,9 @@ const TableProjects: React.FC<TableProjectsProps> = ({dataResponse, onEdit}) => 
 
     const headers = [
         { label: "Título", key: "title" },
-        { label: "Descripción", key: "descriptio " },
-        { label: "Fecha de inicio", key: "startDate" },
-        { label: "Fecha de fin", key: "endDate" },
+        { label: "Descripción", key: "description" },
+        { label: "Inicio", key: "startDate" },
+        { label: "Fin", key: "endDate" },
         { label: "Estado", key: "isActive" },
         { label: "Organizador", key: "organizer" },
         { label: "Acciones", key: "actions" }
@@ -46,8 +46,8 @@ const TableProjects: React.FC<TableProjectsProps> = ({dataResponse, onEdit}) => 
                 <Button onClick={() => handleDelete(project.id)}>{Icons.delete}</Button>
             </div>
         ),
+        
     }));
-
 
     return(
         <div>
