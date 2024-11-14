@@ -47,7 +47,7 @@ const ProjectForm = ({ projectID, closeModal }: IProps) => {
     })
 
     const handleProject = async (data: IProjectRequest) => {
-        const response = await fetch('/api/projects/post', {
+        const response = await fetch('/api/projects/create', {
             method: 'POST',
             body: JSON.stringify(data)
         })
@@ -62,7 +62,7 @@ const ProjectForm = ({ projectID, closeModal }: IProps) => {
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(handleProject)}>
-            <Title level={2}>Proyectos</Title>
+            <Title level={2} className={styles.title}>Proyectos</Title>
 
             <FormField<IProjectRequest>
                 control={control}
@@ -100,7 +100,7 @@ const ProjectForm = ({ projectID, closeModal }: IProps) => {
                 placeholder="Ingresa la fecha de fin del proyecto"
             />
 
-            <Button className="primary" type="submit">Enviar</Button>
+            <Button className="primary-big" type="submit">Enviar</Button>
 
         </form>
     )

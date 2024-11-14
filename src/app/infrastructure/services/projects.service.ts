@@ -22,7 +22,7 @@ export class ProjectService{
 
     async create(body: IProjectRequest) {
         try {
-            const response = this.httpClient.post<IGetProjectsResponse, IProjectRequest>('clients', body);
+            const response = this.httpClient.post<IGetProjectsResponse, IProjectRequest>('projects', body);
             return response;
         } catch (error) {
             console.log(error);

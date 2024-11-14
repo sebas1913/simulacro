@@ -10,6 +10,10 @@
     cursor: pointer;
     gap: 1rem;
 
+    &:active{
+        transform: scale(0.95);
+    }
+
     &.primary {
         background-color: $color-secondary;
         color: $color-primary;
@@ -23,7 +27,7 @@
     &.secondary-border {
         background-color: $color-primary;
         color: $color-secondary;
-        border: 0.1rem solid $color-secondary;
+        border: 0.1rem solid $color-border;
         font-size: 0.8rem;
         padding: 0.6rem;
     }

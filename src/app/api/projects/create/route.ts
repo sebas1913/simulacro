@@ -12,6 +12,6 @@ export async function POST(request: Request) {
         return NextResponse.json(response, {status: 200});
         
     } catch (error: unknown) {
-        return NextResponse.json({message: "Error"}, { status: 500})
+        return NextResponse.json({message: "Error", error}, { status: 500})
     }
 }
