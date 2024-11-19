@@ -1,0 +1,27 @@
+@import "../../../styles/variables";
+
+.selectContainer {
+    width: 100%;
+    display: flex;
+    gap: 0.25rem;
+    flex-direction: column;
+
+    .select {
+        width: 100%;
+        padding: 0.6rem;
+        border: 0.075rem solid $color-border;
+        border-radius: 0.4rem;
+        font-family: var(--font-principal);
+        font-weight: 300;
+    }
+
+    .error {
+        font-size: 0.75rem;
+        font-weight: 300;
+        color: $color-error;
+    }
+
+    .selectError {
+        border: 0.075rem solid $color-error;
+    }
+}

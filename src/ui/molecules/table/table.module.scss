@@ -1,6 +1,9 @@
 @import '../../../styles/variables';
+@import '../../../styles/mixins.scss';
+
 
 .container{
+    @include border-radius(1rem);
     background-color: $color-primary;
     width: 98%;
     margin: 1%;

@@ -1,7 +1,8 @@
-export interface IRegisterUserRequest{
+export interface IRegisterRequest {
     email: string;
     password: string;
     name: string;
     role: string;
-    photo: string;
-}
+    photo: File;
+};
+

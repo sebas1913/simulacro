@@ -1,9 +1,10 @@
-import React from 'react'
+import RegisterTemplate from "@/ui/template/registerTemplate/RegisterTemplate"
 
-export default function PageLogin() {
-  return (
-    <div>
-      Register
-    </div>
-  )
+export default function PageRegister() {
+    return (
+        <div>
+            <RegisterTemplate />
+        </div>
+    )
 }
+

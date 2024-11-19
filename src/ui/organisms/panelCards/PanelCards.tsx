@@ -18,7 +18,7 @@ const PanelCards: React.FC<IProps> = ({ data }) => {
             <Card title="Total de Proyectos" value={totalProjects}>{Icons.folderCard}</Card>
             <Card title="Proyectos Activos" value={activeProjects}>{Icons.chart}</Card>
             <Card title="Número de Organizadores" value={totalOrganizers}>{Icons.users}</Card>
-            <Card title="Vacío" value="">{Icons.calendar}</Card>
+            <Card title="Próximo proyecto" value="">{Icons.calendar}</Card>
         </div>
     );
 };
